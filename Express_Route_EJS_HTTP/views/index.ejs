@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1><%= message %></h1>
+  </body>
+</html>
+
+
+
+
+<!-- <%= %>: Output the value of a variable, with escaping.
+<%- %>: Output the value of a variable, without escaping.
+<% %>: Execute JavaScript code without output. 
+<%# %>: Comments.
+<%% %>: Literal <% %>. -->
+
+
+
+
+1. <%= %>: Output the value of a variable, with escaping
+
+app.get('/escaped', (req, res) => {
+  const data = {
+    userInput: '<script>alert("XSS Attack!");</script>'
+  };
+  res.render('escaped', data);
+});
+
+<!-- escaped.ejs -->
+<p>User input: <%= userInput %></p>
+
+<p>User input: &lt;script&gt;alert("XSS Attack!");&lt;/script&gt;</p>
+
+<!-- unescaped.ejs -->
+<p>User input: <%- userInput %></p>
+
+<p>User input: <script>alert("XSS Attack!");</script></p>
+
+
+
+app.get('/code', (req, res) => {
+  const data = {
+    numbers: [1, 2, 3, 4, 5]
+  };
+  res.render('code', data);
+});
+
+<% for (let i = 0; i < numbers.length; i++) { %>
+  <p>Number: <%= numbers[i] %></p>
+<% } %>
+
+<p>Number: 1</p>
+<p>Number: 2</p>
+<p>Number: 3</p>
+<p>Number: 4</p>
+<p>Number: 5</p>
+
