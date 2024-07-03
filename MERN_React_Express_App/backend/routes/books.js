@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
 
   try {
     const newBook = await book.save();
-    res.status(200).json(newBook);
+    res.status(201).json(newBook);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

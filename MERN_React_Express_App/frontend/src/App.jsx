@@ -32,7 +32,7 @@ const App = () => {
     }
   };
 
-  const filterBooks = async (title) => {
+  const filterBooks = (title) => {
     if (title === "") {
       setBooks(books);
     } else {

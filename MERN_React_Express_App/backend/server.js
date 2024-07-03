@@ -13,7 +13,7 @@ app.use(cors());
 
 // Connect to Server - MongoDB
 mongoose.connect(
-  "mongodb+srv://shubhamshrivastava600:MpVr8LOe04blVxGn@mernapp.kdexeoo.mongodb.net/?retryWrites=true&w=majority&appName=MERNApp"
+  "mongodb+srv://shubhamshrivastava600:hello123@mernapp.kdexeoo.mongodb.net/?retryWrites=true&w=majority&appName=MERNApp"
 );
 
 mongoose.connection.on("connected", () => {
